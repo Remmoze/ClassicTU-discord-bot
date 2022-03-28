@@ -26,14 +26,16 @@
             "server_ip": "46.174.48.12:27268"
         },
         {
-            "channel_id": "957624435530166292",
-            "name": "classictu-4vs4",
-            "server_ip": "46.174.48.12:27202"
-        },
-        {
             "channel_id": "957624477691310080",
             "name": "classictu-10vs10",
             "server_ip": "46.174.52.17:27257"
+        }
+    ],
+    "inactive": [
+        {
+            "channel_id": "957624435530166292",
+            "name": "classictu-4vs4",
+            "server_ip": "46.174.48.12:27202"
         }
     ]
 }

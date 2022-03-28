@@ -2,10 +2,9 @@ import fs from "fs";
 import { fetchEmbed } from "./updater.js";
 
 class ChannelManager {
-    #servers = [];
-
     constructor(client) {
         this.client = client;
+        this.servers = [];
     }
 
     async #getChannelPost(channelId) {
@@ -27,7 +26,7 @@ class ChannelManager {
 
     async addServer(serverIp, channelId) {
         const post = await this.#getChannelPost(channelId);
-        this.#servers.push({ serverIp, post });
+        this.servers.push({ serverIp, post });
     }
 
     async loadConfigServers() {
@@ -38,7 +37,7 @@ class ChannelManager {
     }
 
     async updateAll() {
-        for (const server of this.#servers) {
+        for (const server of this.servers) {
             let embed = await fetchEmbed(server.serverIp);
             server.post.edit({ content: null, embeds: [embed] });
         }
