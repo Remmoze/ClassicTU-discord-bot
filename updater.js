@@ -2,10 +2,7 @@ import { createEmbed, defaultEmbed } from "./embedMaker.js";
 
 import { queryGameServerInfo, queryGameServerPlayer } from "steam-server-query";
 
-const getMapIcon = (mapName) => {
-    // make map logos
-    return "https://i.imgur.com/y7hWjCR.jpeg";
-};
+import { getMapUrl } from "./mapsUrls.js";
 
 const fetchServerData = async (serverIp) => {
     return await Promise.all([queryGameServerInfo(serverIp), queryGameServerPlayer(serverIp)]).catch((e) => {
@@ -21,7 +18,7 @@ const parseServerData = (info, players, serverIp) => {
         location: "Россия, Москва",
         playerCount: info.players + " / " + info.maxPlayers,
         mapName: info.map,
-        mapIcon: getMapIcon(info.map),
+        mapIcon: getMapUrl(info.map),
         players: players.players.map((player) => player.name),
         url: "https://www.gs4u.net/ru/s/147379.html",
         author: {

@@ -1,6 +1,6 @@
 import { MessageEmbed } from "discord.js";
 
-const unknownImg = "https://i.imgur.com/y7hWjCR.jpeg";
+import { unknown_map } from "./mapsUrls.js";
 
 /*
 Player list formatting:
@@ -68,8 +68,8 @@ const createEmbed = (props) => {
         .setColor("#0099ff")
         .setAuthor({
             name: props?.author.name ?? "Unknown",
-            iconURL: props?.author.iconURL ?? unknownImg,
-            url: props?.author.url ?? unknownImg,
+            iconURL: props?.author.iconURL ?? unknown_map,
+            url: props?.author.url ?? unknown_map,
         })
         .setTitle(props.name)
         .setURL(props.url)
@@ -80,7 +80,7 @@ const createEmbed = (props) => {
         .addField("\u200b", "\u200b")
         .addFields(...formatPlayerList(props.players, props.playerCount))
         .setTimestamp()
-        .setFooter({ text: "Last updated", iconURL: props?.author.iconURL ?? unknownImg });
+        .setFooter({ text: "Last updated", iconURL: props?.author.iconURL ?? unknown_map });
 };
 
 const defaultEmbed = (serverIp) => {
@@ -90,12 +90,12 @@ const defaultEmbed = (serverIp) => {
         location: "Unknown",
         playerCount: "Unknown",
         mapName: "Unknown",
-        mapIcon: unknownImg,
+        mapIcon: unknown_map,
         players: [],
         url: "https://www.gs4u.net/ru/s/147379.html",
         author: {
-            name: "Unknown",
-            iconURL: unknownImg,
+            name: "CLASSICTU",
+            iconURL: "https://i.imgur.com/E27aTub.png",
             url: "https://vk.com/classictu",
         },
     });

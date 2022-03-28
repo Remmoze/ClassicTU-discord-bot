@@ -9,6 +9,7 @@ const main = async () => {
 
     await CM.loadConfigServers();
     await CM.updateAll();
+    console.log("updated");
 };
 
 main();
