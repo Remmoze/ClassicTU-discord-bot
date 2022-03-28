@@ -1,6 +1,6 @@
 import { MessageEmbed } from "discord.js";
 
-const unknownImg = "https://i.imgur.com/yN2xV1q.jpeg";
+const unknownImg = "https://i.imgur.com/y7hWjCR.jpeg";
 
 /*
 Player list formatting:
@@ -64,7 +64,6 @@ const formatPlayerList = (players, playerCount) => {
 };
 
 const createEmbed = (props) => {
-    console.log(props);
     return new MessageEmbed()
         .setColor("#0099ff")
         .setAuthor({
@@ -84,10 +83,10 @@ const createEmbed = (props) => {
         .setFooter({ text: "Last updated", iconURL: props?.author.iconURL ?? unknownImg });
 };
 
-const defaultEmbed = () => {
+const defaultEmbed = (serverIp) => {
     return createEmbed({
         name: "Unknown",
-        ip: "Unknown",
+        ip: serverIp,
         location: "Unknown",
         playerCount: "Unknown",
         mapName: "Unknown",

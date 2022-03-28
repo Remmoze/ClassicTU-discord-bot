@@ -1,4 +1,3 @@
-import { Message } from "discord.js";
 import fs from "fs";
 import { fetchEmbed } from "./updater.js";
 
@@ -26,21 +25,21 @@ class ChannelManager {
         return post;
     }
 
-    async addServer(serverId, channelId) {
+    async addServer(serverIp, channelId) {
         const post = await this.#getChannelPost(channelId);
-        this.#servers.push({ serverId, post });
+        this.#servers.push({ serverIp, post });
     }
 
     async loadConfigServers() {
         let data = JSON.parse(fs.readFileSync("./configuration.json"));
         for (const item of data.channels) {
-            await this.addServer(item.server_id, item.channel_id);
+            await this.addServer(item.server_ip, item.channel_id);
         }
     }
 
     async updateAll() {
         for (const server of this.#servers) {
-            let embed = await fetchEmbed(server.serverId);
+            let embed = await fetchEmbed(server.serverIp);
             server.post.edit({ content: null, embeds: [embed] });
         }
     }
