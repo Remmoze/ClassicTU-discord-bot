@@ -1,0 +1,39 @@
+{
+    "channels": [
+        {
+            "channel_id": "957623831508443176",
+            "name": "classictu-rushtank",
+            "server_id": "147362"
+        },
+        {
+            "channel_id": "957624122706395147",
+            "name": "classictu-double-tank-witch",
+            "server_id": "147367"
+        },
+        {
+            "channel_id": "957624199856410664",
+            "name": "classictu-friends",
+            "server_id": "82836"
+        },
+        {
+            "channel_id": "957624253732241489",
+            "name": "classictu-hard",
+            "server_id": "147372"
+        },
+        {
+            "channel_id": "957624399975043092",
+            "name": "classictu-lucky38",
+            "server_id": "147377"
+        },
+        {
+            "channel_id": "957624435530166292",
+            "name": "classictu-4vs4",
+            "server_id": "147378"
+        },
+        {
+            "channel_id": "957624477691310080",
+            "name": "classictu-10vs10",
+            "server_id": "147379"
+        }
+    ]
+}
