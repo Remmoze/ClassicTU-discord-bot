@@ -1,7 +1,7 @@
-import { createBot } from "./discordbot.js";
+import { createBot } from "./src/discordbot.js";
 import "dotenv/config";
 
-import ChannelManager from "./ChannelManager.js";
+import ChannelManager from "./src/ChannelManager.js";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000 * 60 * 2));
 

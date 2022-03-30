@@ -30,7 +30,7 @@ class ChannelManager {
     }
 
     async loadConfigServers() {
-        let data = JSON.parse(fs.readFileSync("./configuration.json"));
+        let data = JSON.parse(fs.readFileSync("./data/configuration.json"));
         for (const item of data.channels) {
             await this.addServer(item.server_ip, item.channel_id);
         }
