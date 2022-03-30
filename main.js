@@ -11,7 +11,7 @@ const main = async () => {
 
     await CM.loadConfigServers();
     while (true) {
-        CM.updateAll();
+        await CM.updateAll();
         console.log("updated");
         await wait();
     }

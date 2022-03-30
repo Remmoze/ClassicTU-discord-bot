@@ -34,9 +34,13 @@ const fetchEmbed = async (serverIp) => {
     if (resp === null) {
         return defaultEmbed(serverIp);
     }
-    let [info, players] = resp;
-    let data = parseServerData(info, players, serverIp);
+    let data = parseServerData(...resp, serverIp);
     return createEmbed(data);
 };
 
-export { fetchEmbed };
+const fetchParsedServerData = async (serverIp) => {
+    let resp = await fetchServerData(serverIp);
+    return resp === null ? null : parseServerData(...resp, serverIp);
+};
+
+export { fetchEmbed, fetchParsedServerData };

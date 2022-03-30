@@ -1,5 +1,6 @@
 import fs from "fs";
-import { fetchEmbed } from "./updater.js";
+import { fetchParsedServerData } from "./updater.js";
+import { createEmbed, defaultEmbed } from "./embedMaker.js";
 
 class ChannelManager {
     constructor(client) {
@@ -24,22 +25,37 @@ class ChannelManager {
         return post;
     }
 
-    async addServer(serverIp, channelId) {
-        const post = await this.#getChannelPost(channelId);
-        this.servers.push({ serverIp, post });
+    async addServer(ip, channel, name) {
+        const post = await this.#getChannelPost(channel);
+        this.servers.push({ ip, post, channel, name });
     }
 
     async loadConfigServers() {
         let data = JSON.parse(fs.readFileSync("./data/configuration.json"));
         for (const item of data.channels) {
-            await this.addServer(item.server_ip, item.channel_id);
+            await this.addServer(item.server_ip, item.channel_id, item.name);
         }
+    }
+
+    async setChannelName(server, isOffline, playerCount) {
+        let prefix = "💥";
+        if (!isOffline) {
+            if (playerCount > 4) prefix = "⭐️";
+            else if (playerCount > 0) prefix = "🌝";
+            else prefix = "🌚";
+        }
+        let channel = this.client.channels.cache.get(server.channel);
+        await channel.setName(prefix + server.name);
     }
 
     async updateAll() {
         for (const server of this.servers) {
-            let embed = await fetchEmbed(server.serverIp);
-            server.post.edit({ content: null, embeds: [embed] });
+            let data = await fetchParsedServerData(server.ip);
+            await this.setChannelName(server, data === null, data?.players.length);
+
+            let embed = data === null ? defaultEmbed(server.ip) : createEmbed(data);
+
+            await server.post.edit({ content: null, embeds: [embed] });
         }
     }
 }

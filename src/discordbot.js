@@ -23,36 +23,14 @@ const createBot = (token) => {
             }
         });
 
+        client.on("rateLimit", (data) => {
+            console.log("Reached the rate limit!");
+            console.log("timeout:", data.timeout);
+            console.log("limit:", data.limit);
+        });
+
         client.login(token);
     });
 };
 
-const formatPlayerList = (players, playerCount) => {
-    return [
-        { name: "Игроки: " + playerCount, value: players.slice(0, players.length / 3).join("\n"), inline: true },
-        { name: "\u200b", value: players.slice(players.length / 3, (2 * players.length) / 3).join("\n"), inline: true },
-        { name: "\u200b", value: players.slice((2 * players.length) / 3).join("\n"), inline: true },
-    ];
-};
-
-const createEmbed = (data) => {
-    return (
-        new MessageEmbed()
-            .setColor("#0099ff")
-            .setAuthor({
-                name: "CLASSICTU",
-                iconURL: "https://i.imgur.com/E27aTub.png",
-                url: "https://vk.com/classictu",
-            })
-            .setTitle(data.serverName)
-            .setURL("https://www.gs4u.net/ru/s/147379.html")
-            .addField(data.IP[0], data.IP[1], true)
-            .addField(data.location[0], data.location[1], true)
-            .addField("\u200b", "\u200b")
-            //.addField("players", data.players.join("\n"), true)
-            .addFields(...formatPlayerList(data.players, data.playerCount[1]))
-    );
-};
-
-export { createBot, createEmbed };
-//https://i.imgur.com/E27aTub.png
+export { createBot };

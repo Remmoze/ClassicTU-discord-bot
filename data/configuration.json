@@ -2,40 +2,39 @@
     "channels": [
         {
             "channel_id": "957623831508443176",
-            "name": "classictu-rushtank",
+            "name": "rushtank",
             "server_ip": "46.174.50.30:27237"
         },
         {
             "channel_id": "957624122706395147",
-            "name": "classictu-double-tank-witch",
+            "name": "double-tank-witch",
             "server_ip": "46.174.48.14:27241"
         },
         {
             "channel_id": "957624199856410664",
-            "name": "classictu-friends",
+            "name": "friends",
             "server_ip": "46.174.48.39:27207"
         },
         {
             "channel_id": "957624253732241489",
-            "name": "classictu-hard",
+            "name": "hard",
             "server_ip": "46.174.48.20:27216"
         },
         {
             "channel_id": "957624399975043092",
-            "name": "classictu-lucky38",
+            "name": "lucky38",
             "server_ip": "46.174.48.12:27268"
         },
         {
             "channel_id": "957624477691310080",
-            "name": "classictu-10vs10",
+            "name": "10vs10",
             "server_ip": "46.174.52.17:27257"
-        }
-    ],
-    "inactive": [
+        },
         {
             "channel_id": "957624435530166292",
-            "name": "classictu-4vs4",
+            "name": "4vs4",
             "server_ip": "46.174.48.12:27202"
         }
-    ]
+    ],
+    "inactive": []
 }
